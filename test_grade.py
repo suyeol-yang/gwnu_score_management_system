@@ -39,9 +39,9 @@ class TestGrade(unittest.TestCase):
         self.assertEqual(95,self.my_grade1.mat)
         self.assertEqual(60,self.my_grade2.mat)
 
-    def test_sum(self):
-        self.assertEqual(270,self.my_grade1.sum)
-        self.assertEqual(210,self.my_grade2.sum)
+    def test_gsum(self):
+        self.assertEqual(270,self.my_grade1.gsum)
+        self.assertEqual(210,self.my_grade2.gsum)
 
     def test_avg(self):
         self.assertEqual(90,self.my_grade1.avg)

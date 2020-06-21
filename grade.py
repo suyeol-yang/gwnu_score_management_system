@@ -33,9 +33,9 @@ class Grade:
         return self._mat
 
     @property
-    def sum(self):
+    def gsum(self):
         return self._kor + self._eng + self._mat
 
     @property
     def avg(self):
-        return (self._kor + self._eng + self._mat)/3
+        return round((self._kor + self._eng + self._mat)/3, 1)
