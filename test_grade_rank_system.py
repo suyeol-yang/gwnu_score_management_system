@@ -37,46 +37,46 @@ class TestGradeRankSystem(unittest.TestCase):
             tgrs = GradeRankSystem()
             self.assertEqual(3,tgrs.read('grade_data1.csv'))
 
-    def test_sort_by_gid_1(self):
+    def test_sort_1(self):
         with patch('grade_rank_system.open',self.m_open_1):
             tgrs = GradeRankSystem()
             tgrs.read('grade.csv')
 
-        result = tgrs.sort_by_gid(order="asc")
+        result = tgrs.sort(order_key = "gid")
         self.assertEqual('1,양수열,95,92,88,275,91.7',result)
 
-    def test_sort_by_gid_2(self):
+    def test_sort_2(self):
         with patch('grade_rank_system.open',self.m_open_2):
             tgrs = GradeRankSystem()
             tgrs.read('grade.csv')
 
-        result = tgrs.sort_by_gid(order="asc")
+        result = tgrs.sort(order_key = "gid")
         self.assertEqual('1,양수열,95,92,88,275,91.7\n2,이승수,80,70,60,210,70.0',result)
 
-    def test_sort_by_gid_3(self):
+    def test_sort_3(self):
         with patch('grade_rank_system.open',self.m_open_2):
             tgrs = GradeRankSystem()
             tgrs.read('grade.csv')
 
-        result = tgrs.sort_by_gid(order="des")
+        result = tgrs.sort(order_key = "gid",order_way="des")
         self.assertEqual('2,이승수,80,70,60,210,70.0\n1,양수열,95,92,88,275,91.7',result)
 
 
-    def test_sort_by_rank_1(self):
+    def test_sort_4(self):
         with patch('grade_rank_system.open',self.m_open_2):
             tgrs = GradeRankSystem()
             tgrs.read('grade.csv')
 
-        result = tgrs.sort_by_rank(order="asc")
-        self.assertEqual('2,이승수,80,70,60,210,70.0\n1,양수열,95,92,88,275,91.7',result)
+        result = tgrs.sort()
+        self.assertEqual('1,양수열,95,92,88,275,91.7,1\n2,이승수,80,70,60,210,70.0,2',result)
 
-    def test_sort_by_rank_2(self):
+    def test_sort_5(self):
         with patch('grade_rank_system.open',self.m_open_2):
             tgrs = GradeRankSystem()
             tgrs.read('grade.csv')
 
-        result = tgrs.sort_by_rank(order="des")
-        self.assertEqual('1,양수열,95,92,88,275,91.7\n2,이승수,80,70,60,210,70.0',result)
+        result = tgrs.sort(order_way="des")
+        self.assertEqual('2,이승수,80,70,60,210,70.0,2\n1,양수열,95,92,88,275,91.7,1',result)
 
 
 if __name__ == "__main__":
