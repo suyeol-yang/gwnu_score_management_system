@@ -23,6 +23,7 @@ class GradeRankSystem:
         return len(self._grades)
 
     def _make_grades_string(self,order_key,grades):
+        rank = 1;
         result = ""
         for key, item in grades:
             result = result + item.gid + ","
@@ -35,7 +36,8 @@ class GradeRankSystem:
             if order_key == 'rank':
                 result = result.rstrip("\n")
                 result = result + ","
-                result = result + str(key) + "\n"
+                result = result + str(rank) + "\n"
+            rank = rank + 1
         return result.strip()
 
     def sort(self,order_key="rank", order_way="asc"):
