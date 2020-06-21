@@ -62,5 +62,22 @@ class TestGradeRankSystem(unittest.TestCase):
         self.assertEqual('2,이승수,80,70,60,210,70.0\n1,양수열,95,92,88,275,91.7',result)
 
 
+    def test_sort_by_rank_1(self):
+        with patch('grade_rank_system.open',self.m_open_2):
+            tgrs = GradeRankSystem()
+            tgrs.read('grade.csv')
+
+        result = tgrs.sort_by_rank(order="asc")
+        self.assertEqual('2,이승수,80,70,60,210,70.0\n1,양수열,95,92,88,275,91.7',result)
+
+    def test_sort_by_rank_2(self):
+        with patch('grade_rank_system.open',self.m_open_2):
+            tgrs = GradeRankSystem()
+            tgrs.read('grade.csv')
+
+        result = tgrs.sort_by_rank(order="des")
+        self.assertEqual('1,양수열,95,92,88,275,91.7\n2,이승수,80,70,60,210,70.0',result)
+
+
 if __name__ == "__main__":
     unittest.main()
